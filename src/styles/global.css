@@ -74,7 +74,17 @@ a:hover, a:active {
     width: 40px;
     height: 5px;
     margin-bottom: 10px;
-    background-color: #ff9776;
+    background-color: rgb(130, 182, 235);
+}
+
+footer p {
+    font-size: 0.7rem;
+}
+
+footer hr {
+    border-style: solid;
+    border-width: 1px 0 0 0;
+    margin: 5rem 0 1rem 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -94,6 +104,10 @@ a:hover, a:active {
     .nav-links a:focus {
         color: #369e8f;
         background-color: #073a32;
+    }
+
+    .hamburger .line {
+        background-color: #369e8f;
     }
 }
 

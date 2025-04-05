@@ -1,0 +1,29 @@
+div.world-news {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.world-news h2 {
+    font-weight: 500;
+    margin: 0;
+    padding: 3ch 0.5ch 0.5ch;
+}
+
+.world-news ul, .world-news ul li {
+    display: block;
+    padding-inline-start: 0;
+}
+
+.world-news > ul > li > ul > li {
+    padding: 0.3ch;
+    padding-inline-start: 1ch;
+}
+
+@media screen and (max-width: 700px) {
+
+    div.world-news {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+}

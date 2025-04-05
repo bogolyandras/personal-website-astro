@@ -1,4 +1,5 @@
 ---
+import "../../styles/blog.css";
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPost from "../../components/BlogPost.astro";
 
@@ -18,8 +19,8 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 <BaseLayout pageTitle={tag}>
-    <p>Posts tagged with {tag}</p>
-    <ul>
-        {posts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
+    <p>{tag}</p>
+    <ul class="blog-list">
+        {posts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate} description={post.frontmatter.description} />)}
     </ul>
 </BaseLayout>

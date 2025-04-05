@@ -1,8 +1,17 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import {formatServerDate} from '../scripts/serverdaterenderer.ts';
 const { frontmatter } = Astro.props;
 ---
-<BaseLayout pageTitle={frontmatter.title}>
-    <p>Written by {frontmatter.author}</p>
+<BaseLayout pageTitle={frontmatter.title + " | Blog entry"}>
+    <p><a href="/blog/">&lt; Go back</a></p>
+    <h2>{frontmatter.title}</h2>
+    <p data-date={frontmatter.pubDate} class="date">📅{formatServerDate(frontmatter.pubDate)}</p>
     <slot />
 </BaseLayout>
+<style>
+    .date {
+        font-size: 0.8em;
+        margin-bottom: 1em;
+    }
+</style>

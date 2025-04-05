@@ -1,3 +1,9 @@
+---
+import { buildDate } from '../../.data/build-date.ts';
+import {formatServerDate} from '../scripts/serverdaterenderer.ts';
+const formattedBuildDate = formatServerDate(buildDate);
+---
 <footer>
-    <p>Footer here</p>
+    <hr />
+    <p>Last update was around <span class="date" data-date={buildDate}>📅{formattedBuildDate}</span></p>
 </footer>

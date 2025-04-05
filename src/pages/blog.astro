@@ -1,15 +1,20 @@
 ---
-import "../styles/global.css";
+import "../styles/blog.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import {formatServerDate} from '../scripts/serverdaterenderer.ts';
 import BlogPost from "../components/BlogPost.astro";
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 ---
 
 <BaseLayout pageTitle="Blog">
-    <h2>My awesome blog subtitle</h2>
-    <ul>
+    <h2>Blog entries</h2>
+    <ul class="blog-list">
         {allPosts.map(
-            (post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />
+            (post: any) => <BlogPost url={post.url} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate} description={post.frontmatter.description} />
         )}
     </ul>
+    <h2>Additional resources</h2>
+    <p>
+        <a href="/tags/">Tags</a>
+    </p>
 </BaseLayout>

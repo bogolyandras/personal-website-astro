@@ -1,8 +1,26 @@
 ---
-import "../styles/global.css";
+import "../styles/world-news.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import worldNewsData from '../data/world-news.ts';
 ---
 
 <BaseLayout pageTitle="World News">
-    <h2>My awesome world news subtitle here</h2>
+    <div class="world-news">
+      {worldNewsData.map((region, _) => (
+        <ul>
+          {region.map((country) => (
+            <li>
+              <h2>{country.name}</h2>
+              <ul>
+                {country.websites.map((website) => (
+                  <li>
+                    <a href={website.url}>{website.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
 </BaseLayout>

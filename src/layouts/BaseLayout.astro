@@ -17,11 +17,9 @@ const { pageTitle } = Astro.props;
 <body>
     <Hamburger />
     <Navigation />
-    <h1>{pageTitle}</h1>
     <slot />
     <Footer />
-    <script>
-        import "../scripts/menu.js";
-    </script>
+    <script>import "../scripts/menu.js"</script>
 </body>
 </html>
+<script>import "../scripts/daterenderer"</script>
