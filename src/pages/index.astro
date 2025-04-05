@@ -1,16 +1,18 @@
 ---
-
+import "../styles/global.css";
+import { Picture  } from 'astro:assets';
+import catsImage from '../images/Firefly a city of cats 99761.jpg';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle="Home Page">
+	<h2>Welcome to my world!</h2>
+	<p>Here you will find some interesting stuff! Although there are not too many things, you can take a look around.</p>
+	<Picture formats={['avif', 'webp']} src={catsImage} alt="A city of cats." style={{width: '100%', height: '100%'}} />
+	<p>Follow me on</p>
+	<ul>
+		<li><a href="https://www.linkedin.com/in/bogolyandras/">LinkedIn</a></li>
+		<li><a href="https://github.com/bogolyandras">GitHub</a></li>
+		<li><a href="https://www.credly.com/users/andras-bogoly/">Credly</a></li>
+	</ul>
+</BaseLayout>
