@@ -2,6 +2,9 @@
   "name": "personal-website-astro",
   "type": "module",
   "version": "0.0.1",
+  "pnpm": {
+    "onlyBuiltDependencies": ["sharp"]
+  },
   "scripts": {
     "dev": "astro dev",
     "prebuild": "node prebuild.mjs",
@@ -10,8 +13,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.11",
-    "astro": "^5.4.2",
-    "sharp": "^0.34.0"
+    "@astrojs/rss": "^4.0.12",
+    "astro": "^5.12.8",
+    "sharp": "^0.34.3"
   }
 }
