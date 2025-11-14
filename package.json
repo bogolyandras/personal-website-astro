@@ -3,7 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "pnpm": {
-    "onlyBuiltDependencies": ["sharp"]
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   },
   "scripts": {
     "dev": "astro dev",
@@ -14,7 +16,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",
-    "astro": "^5.12.8",
+    "astro": "^5.13.10",
     "sharp": "^0.34.3"
   }
 }
