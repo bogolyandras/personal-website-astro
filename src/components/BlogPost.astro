@@ -1,9 +1,0 @@
----
-import {formatServerDate} from '../scripts/serverdaterenderer.ts';
-const { url, title, pubDate, description } = Astro.props;
----
-<li>
-    <h3>{title}</h3>
-    <p data-date={pubDate} class="date">📅{formatServerDate(pubDate)}</p>
-    <p>{description} <a href={url}>Read more &gt;</a></p>
-</li>

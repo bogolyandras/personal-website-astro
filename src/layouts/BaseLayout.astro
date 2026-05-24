@@ -1,25 +1,20 @@
 ---
 import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import Hamburger from "../components/Hamburger.astro";
 const { pageTitle } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle} | András Bögöly's Personal Homepage</title>
-</head>
-<body>
-    <Hamburger />
-    <Navigation />
-    <slot />
-    <Footer />
-    <script>import "../scripts/menu.js"</script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle} | András Bögöly's Personal Homepage</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    </head>
+    <body>
+        <main>
+            <slot />
+        </main>
+    </body>
 </html>
-<script>import "../scripts/daterenderer"</script>
