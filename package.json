@@ -13,6 +13,6 @@
   "license": "ISC",
   "packageManager": "pnpm@10.30.2",
   "dependencies": {
-    "astro": "^6.4.6"
+    "astro": "^7.1.0"
   }
 }
