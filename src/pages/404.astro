@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { notFoundPage } from "../data/profile";
 ---
 
-<BaseLayout pageTitle="Not found">
+<BaseLayout pageTitle={notFoundPage.title} description={notFoundPage.description}>
     <h1>Not found</h1>
     <p class="tagline">Sorry 😿 we couldn’t find what you were looking for.</p>
     <nav>

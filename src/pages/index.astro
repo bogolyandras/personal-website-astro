@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { person, profiles } from "../data/profile";
+import { pages, person, profiles } from "../data/profile";
 
 const links = [profiles.github, profiles.linkedin, profiles.credly];
 ---
 
-<BaseLayout pageTitle="Home Page">
+<BaseLayout pageTitle={pages.home.title} description={pages.home.description}>
   <h1>{person.name}</h1>
   <p class="tagline">{person.title}</p>
   <nav>

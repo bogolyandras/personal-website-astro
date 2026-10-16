@@ -6,6 +6,26 @@ export const person = {
     title: "Java Backend Developer",
 };
 
+// Each description is used both as the page's <meta name="description"> and in /llms.txt.
+export const pages = {
+    home: {
+        path: "/",
+        title: "Home Page",
+        description: `Personal homepage of ${person.name}, ${person.title}, with links to GitHub, LinkedIn and Credly.`,
+    },
+    contact: {
+        path: "/contact/",
+        title: "Contact",
+        description: `Contact page of ${person.name}. Work in progress; until it's ready, LinkedIn is the best way to get in touch.`,
+    },
+};
+
+// Kept out of `pages` so it isn't listed in /llms.txt.
+export const notFoundPage = {
+    title: "Not found",
+    description: `Page not found on ${person.name}'s personal homepage.`,
+};
+
 export const profiles = {
     github: {
         label: "GitHub",

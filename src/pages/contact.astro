@@ -1,18 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { profiles } from "../data/profile";
-
-const links = [profiles.linkedin, profiles.github];
+import { pages, profiles } from "../data/profile";
 ---
 
-<BaseLayout pageTitle="Contact">
+<BaseLayout pageTitle={pages.contact.title} description={pages.contact.description}>
     <h1>Contact me</h1>
-    <p class="tagline">The best way to reach me is a message on LinkedIn.</p>
+    <p class="tagline">🚧 This page is a work in progress.</p>
     <nav>
         <ul>
-            {links.map((link) => (
-                <li><a href={link.href} target="_blank" rel="noopener">{link.label}</a></li>
-            ))}
+            <li><a href={profiles.linkedin.href} target="_blank" rel="noopener">{profiles.linkedin.label}</a></li>
             <li><a href="/">Go home</a></li>
         </ul>
     </nav>
