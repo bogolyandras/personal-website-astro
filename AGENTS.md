@@ -27,7 +27,7 @@ Manage the background server with `bunx astro dev stop`, `bunx astro dev status`
 
 - **Astro 7** — file-based routing under `src/pages/`; `.astro` files use a frontmatter fence (`---`) for server-side JS/TS and HTML below it
 - **TypeScript** — strict mode via `astro/tsconfigs/strict`; all `.ts`/`.astro` files are included
-- **Bun** — package manager (`bun.lock`); CI (`.github/workflows/node.js.yml`) installs with `bun install --frozen-lockfile` and builds with `bun run build`
+- **Bun** — package manager (`bun.lock`); CI (`.github/workflows/node.js.yml`) installs with `bun install --frozen-lockfile` and builds with `bun run build`; pushes to `main` then run `bun run deploy` (`scripts/deploy-bunny.ts`, a dependency-free sync of `dist/` to Bunny Storage plus a pull zone purge) (secrets `BUNNY_STORAGE_ZONE`, `BUNNY_STORAGE_PASSWORD`, `BUNNY_API_KEY`, `BUNNY_PULL_ZONE_ID`; optional variable `BUNNY_STORAGE_ENDPOINT`)
 
 ## Project state
 
