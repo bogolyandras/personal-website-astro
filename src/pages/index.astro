@@ -1,15 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/global.css";
+import { person, profiles } from "../data/profile";
+
+const links = [profiles.github, profiles.linkedin, profiles.credly];
 ---
 
 <BaseLayout pageTitle="Home Page">
-  <h1>András Bögöly</h1>
-  <p class="tagline">Java Backend Developer</p>
+  <h1>{person.name}</h1>
+  <p class="tagline">{person.title}</p>
   <nav>
-    <a href="/contact/">Contact me</a>
-    <a href="https://github.com/bogolyandras" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://linkedin.com/in/bogolyandras" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://www.credly.com/users/andras-bogoly/" target="_blank" rel="noopener">Credly</a>
+    <ul>
+      <li><a href="/contact/">Contact me</a></li>
+      {links.map((link) => (
+        <li><a href={link.href} target="_blank" rel="noopener">{link.label}</a></li>
+      ))}
+    </ul>
   </nav>
 </BaseLayout>

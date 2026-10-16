@@ -62,11 +62,22 @@ h1 {
 
 nav {
     margin-top: 2rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.25rem;
+}
+
+/* Without CSS this is a plain bulleted list. Browsers without flexbox lay the
+   items out as inline-blocks; spacing uses margins, not gap, so engines that
+   support flexbox but not flex gap (e.g. SeaMonkey) still space the links. */
+nav ul {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0.25rem 1.5rem 0.25rem 0;
 }
 
 nav a {
