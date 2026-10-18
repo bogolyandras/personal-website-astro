@@ -3,7 +3,7 @@
 // Changed and new files are uploaded first and stale remote files are deleted afterwards,
 // so the site never has missing files mid-deploy. Unchanged files (same SHA-256) are skipped.
 //
-// Usage: bun scripts/deploy-bunny.ts [dir]
+// Usage: node scripts/deploy-bunny.ts [dir]  (Node 22.18+, which runs .ts files natively)
 // Env:   BUNNY_STORAGE_ZONE, BUNNY_STORAGE_PASSWORD, BUNNY_API_KEY, BUNNY_PULL_ZONE_ID,
 //        BUNNY_STORAGE_ENDPOINT (optional, defaults to storage.bunnycdn.com — Falkenstein)
 //

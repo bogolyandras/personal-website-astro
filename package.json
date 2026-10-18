@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "bun scripts/deploy-bunny.ts"
+    "deploy": "node scripts/deploy-bunny.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
