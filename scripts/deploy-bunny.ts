@@ -41,7 +41,8 @@ const api = async (method: string, path: string, body?: unknown) =>
     body: body === undefined ? undefined : JSON.stringify(body),
   });
 
-type PullZone = { StorageZoneId: number };
+// OriginType 2 = StorageZone (https://bunny.net/docs/api-reference/core/pull-zone/update-pull-zone)
+type PullZone = { StorageZoneId: number; OriginType: number };
 type StorageZone = { Id: number; Name: string; Password: string };
 
 // Pick the zone the pull zone is not serving from.
@@ -116,13 +117,14 @@ console.log(`${uploaded} uploaded, ${localFiles.length - uploaded} unchanged, ${
 // Give the storage zone a moment to replicate before the edge starts fetching from it.
 if (uploaded > 0 || stale.length > 0) await new Promise((resolve) => setTimeout(resolve, 5000));
 
-await api('POST', `/pullzone/${pullZoneId}`, { StorageZoneId: target.Id });
+console.log(`pull zone origin type: ${pullZone.OriginType}`);
+await api('POST', `/pullzone/${pullZoneId}`, { OriginType: 2, StorageZoneId: target.Id });
 
 // Bunny can accept the update without applying it, so read the pull zone back.
 const switched = (await (await api('GET', `/pullzone/${pullZoneId}`)).json()) as PullZone;
 if (switched.StorageZoneId !== target.Id) {
   throw new Error(
-    `Pull zone ${pullZoneId} still serves storage zone ${switched.StorageZoneId} after switching to ${target.Name} (${target.Id})`,
+    `Pull zone ${pullZoneId} still serves storage zone ${switched.StorageZoneId} (origin type ${switched.OriginType}) after switching to ${target.Name} (${target.Id})`,
   );
 }
 console.log(`switched pull zone ${pullZoneId} to ${target.Name}`);
