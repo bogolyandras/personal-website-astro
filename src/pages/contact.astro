@@ -1,11 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pages, profiles } from "../data/profile";
+import { CONTACT_FORM_ENDPOINT } from "astro:env/server";
 ---
 
 <BaseLayout pageTitle={pages.contact.title} description={pages.contact.description}>
     <h1>Contact me</h1>
     <p class="tagline">🚧 This page is a work in progress.</p>
+    <p>Contact form endpoint: <code>{CONTACT_FORM_ENDPOINT ?? "not set"}</code></p>
     <nav>
         <ul>
             <li><a href={profiles.linkedin.href} target="_blank" rel="noopener">{profiles.linkedin.label}</a></li>

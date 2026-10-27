@@ -9,6 +9,13 @@ on:
       - main
   workflow_dispatch:
 
+# One run at a time per branch/PR. A run that is waiting gets replaced by a newer one,
+# so commits pushed during a run are skipped in favour of the latest. Runs on main are
+# never cancelled mid-deploy; superseded pull request runs are.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,6 +32,8 @@ jobs:
 
       - name: Build project
         run: bun run build
+        env:
+          CONTACT_FORM_ENDPOINT: ${{ vars.CONTACT_FORM_ENDPOINT }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
@@ -39,9 +48,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment: production
-    concurrency:
-      group: production
-      cancel-in-progress: false
 
     steps:
       - name: Checkout
@@ -59,8 +65,8 @@ jobs:
           node --version
           node scripts/deploy-bunny.ts
         env:
-          BUNNY_STORAGE_ZONE: ${{ secrets.BUNNY_STORAGE_ZONE }}
-          BUNNY_STORAGE_PASSWORD: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
-          BUNNY_STORAGE_ENDPOINT: ${{ vars.BUNNY_STORAGE_ENDPOINT }}
           BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
           BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
+          BUNNY_STORAGE_ZONE_A: ${{ secrets.BUNNY_STORAGE_ZONE_A }}
+          BUNNY_STORAGE_ZONE_B: ${{ secrets.BUNNY_STORAGE_ZONE_B }}
+          BUNNY_STORAGE_ENDPOINT: ${{ vars.BUNNY_STORAGE_ENDPOINT }}
