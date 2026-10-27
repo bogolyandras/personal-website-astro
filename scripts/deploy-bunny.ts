@@ -117,6 +117,14 @@ console.log(`${uploaded} uploaded, ${localFiles.length - uploaded} unchanged, ${
 if (uploaded > 0 || stale.length > 0) await new Promise((resolve) => setTimeout(resolve, 5000));
 
 await api('POST', `/pullzone/${pullZoneId}`, { StorageZoneId: target.Id });
+
+// Bunny can accept the update without applying it, so read the pull zone back.
+const switched = (await (await api('GET', `/pullzone/${pullZoneId}`)).json()) as PullZone;
+if (switched.StorageZoneId !== target.Id) {
+  throw new Error(
+    `Pull zone ${pullZoneId} still serves storage zone ${switched.StorageZoneId} after switching to ${target.Name} (${target.Id})`,
+  );
+}
 console.log(`switched pull zone ${pullZoneId} to ${target.Name}`);
 
 await api('POST', `/pullzone/${pullZoneId}/purgeCache`);
