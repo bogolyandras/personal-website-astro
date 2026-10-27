@@ -91,3 +91,81 @@ nav a {
 nav a:hover {
     color: var(--accent-hover);
 }
+
+/* Fields stack as blocks with margins (no flex gap), like the nav above. */
+.contact-form {
+    margin-top: 2rem;
+    max-width: 60ch;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font: inherit;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.contact-form button {
+    margin-top: 1.25rem;
+    padding: 0.6rem 1.5rem;
+    font: inherit;
+    font-weight: 600;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.contact-form button:hover {
+    background: var(--accent-hover);
+}
+
+.contact-form button:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+.form-status {
+    margin-top: 1rem;
+    color: var(--muted);
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status.error {
+    color: #c62828;
+}
+
+.privacy {
+    margin-top: 1.5rem;
+    max-width: 60ch;
+    font-size: 0.8rem;
+    color: var(--muted);
+}

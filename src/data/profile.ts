@@ -16,7 +16,7 @@ export const pages = {
     contact: {
         path: "/contact/",
         title: "Contact",
-        description: `Contact page of ${person.name}. Work in progress; until it's ready, LinkedIn is the best way to get in touch.`,
+        description: `Contact form for sending ${person.name} a message, answered by email.`,
     },
 };
 
